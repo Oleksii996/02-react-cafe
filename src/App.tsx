@@ -1,11 +1,13 @@
-export default function App() {
-  const handClick = (e: React.MouseEvent<HTMLHeadingElement>) => {
-    console.log(e);
-  };
+import ClickCounter from "./components/CafeInfo";
 
+export default function App() {
   return (
-    <div>
-      <h1 onClick={handClick}>App component</h1>
-    </div>
+    <>
+      <ClickCounter />
+      <ClickCounter />
+      <ClickCounter />
+      <ClickCounter />
+      <ClickCounter />
+    </>
   );
 }
