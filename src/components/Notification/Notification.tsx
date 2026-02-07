@@ -1,7 +1,7 @@
-interface CountDisplayProps {
-  clicks: number;
-}
+import css from "../Notification/Notification.module.css";
 
-export default function CountDisplay({ clicks }: CountDisplayProps) {
-  return <div>The button has been clicked {clicks} times</div>;
-}
+const Notification = () => {
+  return <p className={css.message}>No feedback yet</p>;
+};
+
+export default Notification;

@@ -3,6 +3,7 @@ import css from "./App.module.css";
 import CafeInfo from "../CafeInfo/CafeInfo";
 import VoteOptions from "../VoteOptions/VoteOptions";
 import VoteStats from "../VoteStats/VoteStats";
+import Notification from "../Notification/Notification";
 import type { Votes } from "../../types/votes";
 
 type VoteType = keyof Votes;
@@ -46,6 +47,7 @@ const App = () => {
             : 0
         }
       />
+      {votes.good + votes.neutral + votes.bad === 0 && <Notification />}
     </div>
   );
 };
