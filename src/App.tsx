@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ClickCounter from "./components/CafeInfo";
+import CountDisplay from "./components/Notification";
 
 export default function App() {
   const [clicks, setClick] = useState(0);
@@ -11,6 +12,7 @@ export default function App() {
 
   return (
     <>
+      <CountDisplay clicks={clicks} />
       <ClickCounter onUpdate={handeClick} value={clicks} />
       <ClickCounter onUpdate={handeClick} value={clicks} />
       <ClickCounter onUpdate={handeClick} value={clicks} />
