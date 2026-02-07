@@ -32,22 +32,18 @@ const App = () => {
     });
   };
 
-  const canReset = votes.good > 0 || votes.neutral > 0 || votes.bad > 0;
+  const totalVotes = votes.good + votes.neutral + votes.bad;
+  const canReset = totalVotes > 0;
 
   return (
     <div className={css.app}>
       <CafeInfo />
       <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={canReset} />
-      <VoteStats
-        votes={votes}
-        totalVotes={votes.good + votes.neutral + votes.bad}
-        positiveRate={
-          votes.good + votes.neutral + votes.bad > 0
-            ? Math.round((votes.good / (votes.good + votes.neutral + votes.bad)) * 100)
-            : 0
-        }
-      />
-      {votes.good + votes.neutral + votes.bad === 0 && <Notification />}
+      {totalVotes > 0 ? (
+        <VoteStats votes={votes} totalVotes={totalVotes} positiveRate={Math.round((votes.good / totalVotes) * 100)} />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 };
