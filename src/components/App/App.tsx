@@ -14,7 +14,7 @@ const App = () => {
     bad: 0,
   });
 
-  // Функція для обробки голосування
+  // Функція для обробки
   const handleVote = (type: VoteType) => {
     setVotes((prevVotes) => ({
       ...prevVotes,
@@ -22,7 +22,7 @@ const App = () => {
     }));
   };
 
-  // Функція для скидання всіх голосівä l,
+  // Функція для скидання
   const resetVotes = () => {
     setVotes({
       good: 0,
@@ -37,7 +37,15 @@ const App = () => {
     <div className={css.app}>
       <CafeInfo />
       <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={canReset} />
-      <VoteStats votes={votes} totalVotes={0} positiveRate={0} />
+      <VoteStats
+        votes={votes}
+        totalVotes={votes.good + votes.neutral + votes.bad}
+        positiveRate={
+          votes.good + votes.neutral + votes.bad > 0
+            ? Math.round((votes.good / (votes.good + votes.neutral + votes.bad)) * 100)
+            : 0
+        }
+      />
     </div>
   );
 };
